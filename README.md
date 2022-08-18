@@ -17,12 +17,7 @@ https://www.kaggle.com/datasets/teertha/ushealthinsurancedataset
 ### Problem Statements
 
 Masalah pada proyek ini antara lain:
-- Apakah umur anggota akan mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
-- Apakah jenis kelamin anggota mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
-- Apakah BMI anggota mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
-- Apakah jumlah anak yang dimiliki anggota mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
-- Apakah kebiasaan merokok dari anggota mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
-- Apakah domisili anggota mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
+- Apa saja faktor-faktor yang dimiliki anggota yang akan mempengaruhi biaya premi yang dibebankan kepada anggota asuransi?
 - Apa model yang paling akurat pada kasus proyek ini?
 - Berapa error yang akan terjadi pada hasil prediksi model terakurat pada kasus proyek ini?
 
@@ -30,7 +25,8 @@ Masalah pada proyek ini antara lain:
 ### Goals
 
 Tujuan dari proyek ini antara lain:
-- Menentukan faktor apa saja yang mempengaruhi biaya premi yang harus dibayar.
+- Menentukan faktor-faktor apa saja yang mempengaruhi biaya premi yang harus dibayar.
+- Menentukan model yang bisa memprediksi paling akurat pada proyek ini.
 - Memprediksi biaya premi yang harus ditanggung seakurat mungkin.
 
 ### Solution statements
@@ -48,11 +44,30 @@ Data ini berisi 1338 anggota asuransi dari berbagai wilayah dan usia. Data ini m
 - charges : Beban premi yang harus dibayarkan.
 
 ## Data Preparation
-Preparasi data dilakukan dengan cara menghapus data-data outliers, membuang fitur yang sama sekali tidak berkorelasi dengan fitur-fitur lainnya, menggabungkan usia dan bmi menjadi fitur baru bernama "Faktor kesehatan", dan melakukan standarisasi untuk mempermudah perhitungan.
+Preparasi data dilakukan dengan tahapan sebagai berikut:
+- menghapus data-data outliers 
+  Dalam hal ini, akan dihapus data data outlier atau yang keluar dari trend. Pada proyek ini data outlier adalah data angka BMI yang berlebihan.
+  ![outlier1](https://user-images.githubusercontent.com/106704301/185286463-05ba9db6-7bd7-4a09-b31f-9e0a627943ed.png)
+![outlier 2](https://user-images.githubusercontent.com/106704301/185286476-f2c216a4-7923-4ed5-abd7-52fdd27f4ddf.png)
+- melihat kondisi data sampel
+![jenis kelamin](https://user-images.githubusercontent.com/106704301/185286627-ddba4e62-7d94-4bc9-8642-55db5c490a04.png)
+![perokok](https://user-images.githubusercontent.com/106704301/185286634-bc6fe4db-ec48-4011-859e-4912db5d9177.png)
+![domisili](https://user-images.githubusercontent.com/106704301/185286649-2f4e9064-c283-4b25-b39b-9d6a10a68847.png)
+![data1](https://user-images.githubusercontent.com/106704301/185286658-d86159d2-1b73-4321-8b8d-ec3bed4e6a3d.png)
+![data2](https://user-images.githubusercontent.com/106704301/185286664-a749ffca-0fe1-45aa-aaee-e37b83df29cd.png)
+
+- membuang fitur yang sama sekali tidak berkorelasi dengan fitur-fitur lainnya 
+Dalam hal ini, faktor jumlah anak tidak berkorelasi pada fitur fitur apapun, sehingga fitur "children" bisa dihapus.
+![proyek 1d](https://user-images.githubusercontent.com/106704301/185286823-394aab8c-4005-4edf-b07e-cb9d5d667120.png)
+
+- menggabungkan usia dan bmi menjadi fitur baru bernama "Faktor kesehatan"
+- melakukan standarisasi untuk mempermudah perhitungan.
+![standarisasi](https://user-images.githubusercontent.com/106704301/185287071-deaa77b6-8754-473c-9c07-6a0d402e23a4.png)
+
 Dari proses ini diketahui bahwa:
 - Pada gambar di bawah bisa diketahui bahwa jenis kelamin hampir tidak mempengaruhi biaya premi dimana rerata biaya premi untuk wanita hampir sama dengan pria.
 ![proyek 1a](https://user-images.githubusercontent.com/106704301/185205315-81c19e62-a6ad-47b2-9ee0-bd9c8fa01361.png)
-- Pada gambar di bawah bisa diketahui bahwa kebiasaan merokok SANGAT mempengaruhi biaya premi yang dibebankan dimana rerata biaya premi yang dibebankan kepada anggota yang perokok aktif 3 kali lebih besar daripada kepada anggota yang tidak merokok.
+- Pada gambar di bawah bisa diketahui bahwa kebiasaan merokok sangat mempengaruhi biaya premi yang dibebankan dimana rerata biaya premi yang dibebankan kepada anggota yang perokok aktif 3 kali lebih besar daripada kepada anggota yang tidak merokok.
 ![proyek 1b](https://user-images.githubusercontent.com/106704301/185205721-c58ca518-8532-4e7e-a384-0f206f049444.png)
 - Pada gambar di bawah ini bisa diketahui bahwa daerah domisili anggota juga mempengaruhi besarnya biaya premi yang dibebankan dimana northeast menjadi wilayah yang dikenai rata-rata premi termahal dan southwest menjadi wilayah yang dikenai rata-rata premi termurah.
 ![proyek 1c](https://user-images.githubusercontent.com/106704301/185206543-7cf45196-d881-44ca-8731-273d577575cf.png)
@@ -61,7 +76,11 @@ Dari proses ini diketahui bahwa:
 
 ## Modeling
 - Modeling proyek ini dilakukan dengan 3 metode yang akan dibandingkan satu sama lain antara lain KNN, random forest, dan boosting. Parameter K pada KNN yang digunakan adalah sebesar 3, lalu parameter RF yang digunakan adalah pohonnya sebanyak 100 dan kedalaman sebesar 25, dan untuk boosting learning ratenya sebesar 0.001.
-- Dalam proyek ini, saya akan menggunakan KNN karena hasil prediksinya yaitu 3364.4 yang lebih mendekati hasil aslinya (2523.17). Bandingkan dengan 4170 jika menggunakan random forest dan 4384.3 jika menggunakan boosting.
+- Pada proyek ini, MSE terkecil dicetak oleh boosting, lalu disusul oleh RF, dan MSE terbesar adalah model KNN.
+![MSE](https://user-images.githubusercontent.com/106704301/185289185-e0ffa27f-ffa4-4091-baec-79d88ef1b648.png)
+- Sedangkan untuk hasil prediksi, nilai terdekat dari nilai sesungguhnya (2523.1695) adalah dari KNN sebesar 3364.44, disusul oleh RF sebesar 4170, dan yang paling jauh dari nilai sesungguhnya adalah boosting sebesar 4384.3
+![prediksi](https://user-images.githubusercontent.com/106704301/185289208-bedcb92e-50e1-4ba2-9219-4f410685a308.png)
+- Dalam proyek ini, saya akan menggunakan KNN karena hasil prediksinya paling mendekati nilai sesungguhnya.
 
 ## Evaluation
 - Evaluasi pada proyek ini adalah tingkat ketelitiannya yang masih kecil dimana hasil yang paling mendekati hasil aslinya memiliki perbedaan/error sebesar 33.34% dari nilai aslinya.
