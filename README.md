@@ -80,6 +80,7 @@ Dari proses ini diketahui bahwa:
 - Pada proyek ini, MSE terkecil dicetak oleh boosting, lalu disusul oleh RF, dan MSE terbesar adalah model KNN.
 ![MSE](https://user-images.githubusercontent.com/106704301/185289185-e0ffa27f-ffa4-4091-baec-79d88ef1b648.png)
 - Sedangkan untuk hasil prediksi, nilai terdekat dari nilai sesungguhnya (2523.1695) adalah dari KNN sebesar 3364.44, disusul oleh RF sebesar 4170, dan yang paling jauh dari nilai sesungguhnya adalah boosting sebesar 4384.3
+
 ![prediksi](https://user-images.githubusercontent.com/106704301/185289208-bedcb92e-50e1-4ba2-9219-4f410685a308.png)
 - Dalam proyek ini, saya akan menggunakan KNN karena hasil prediksinya paling mendekati nilai sesungguhnya.
 
