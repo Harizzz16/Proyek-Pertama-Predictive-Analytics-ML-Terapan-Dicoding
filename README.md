@@ -50,6 +50,7 @@ Preparasi data dilakukan dengan tahapan sebagai berikut:
   ![outlier1](https://user-images.githubusercontent.com/106704301/185286463-05ba9db6-7bd7-4a09-b31f-9e0a627943ed.png)
 ![outlier 2](https://user-images.githubusercontent.com/106704301/185286476-f2c216a4-7923-4ed5-abd7-52fdd27f4ddf.png)
 - melihat kondisi data sampel
+
 ![jenis kelamin](https://user-images.githubusercontent.com/106704301/185286627-ddba4e62-7d94-4bc9-8642-55db5c490a04.png)
 ![perokok](https://user-images.githubusercontent.com/106704301/185286634-bc6fe4db-ec48-4011-859e-4912db5d9177.png)
 ![domisili](https://user-images.githubusercontent.com/106704301/185286649-2f4e9064-c283-4b25-b39b-9d6a10a68847.png)
